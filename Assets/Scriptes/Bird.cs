@@ -3,11 +3,28 @@ using UnityEngine;
 
 public class Bird : Unit
 {
-
     private Rigidbody2D rb;
-    [SerializeField]
 
+    [SerializeField]
     float horizontal;//переменная для хранения значения наклона
+
+    [SerializeField]
+    private int live = 5;
+
+    public int Live
+    {
+        get { return live; }
+        set
+        {
+            if (value < 5)  //типа если изменилось кол-во жизней, обновите ui
+            {
+                live = value;
+                lives.Refresh();
+            }
+        }
+    }
+
+    private Lives lives;
 
     private float moveInput;
 
@@ -66,35 +83,50 @@ public class Bird : Unit
 
     private void Awake()
     {
+        lives = FindObjectOfType<Lives>();
         bullet = Resources.Load<Bullet>("Bullet");//откуда подгружаем. "Bullet" - назв картинки, из какой папки
     }
 
-    void OnCollisionEnter2D(Collision2D other) // работает с соприкосновениями
+    void OnCollisionEnter2D(Collision2D collision) // работает с соприкосновениями
     {//если герой касается объекта с тегом Platform,
      //то скидываем скорость прыжка, что бы не разгонялся при каждом прыжке 
 
-        if (other.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Platform")
         {
             rb.velocity = Vector2.zero;
-            rb.AddForce(transform.up * 20, ForceMode2D.Impulse); //направляем его вверх
+            rb.AddForce(transform.up * 18, ForceMode2D.Impulse); //направляем его вверх
         }
 
-        if (other.gameObject.tag == "DeadPlatform") //смертельная платформа
+        if (collision.gameObject.tag == "DeadPlatform") //смертельная платформа
         {
-            rb.velocity = Vector2.zero;
-            
+            rb.velocity = Vector2.zero;          
         }
-
+   
     }
     private void Shoot()
     {
        Vector3 position = transform.position;
        Bullet newBullet= Instantiate(bullet, position, bullet.transform.rotation) as Bullet; //создание пули
-
+       newBullet.Parent = gameObject;
        newBullet.Direction=newBullet.transform.right*(faceRight? 1.0F :-1.0F);//стреляет в зависимости от направления птички
 
     }
 
-    
+    public override void ReceiveDamage() // отнимается жизнь. override - переопределили метод
+    {
+        Live--;
+        rb.velocity = Vector3.zero; // обнуляем ускорение
+        rb.AddForce(transform.up* 17.0F, ForceMode2D.Impulse); // при касании противника подлетает вверх
+        Debug.Log(Live); //кол-во жизней в консоли оставшиеся
+    }
 
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        Bullet bullet = collider.gameObject.GetComponent<Bullet>(); // столкновение героя с врагом
+        if (bullet&&bullet.Parent!=gameObject)  //если пулю запустил не герой
+        {
+            ReceiveDamage();
+        }
+
+    }
 }
