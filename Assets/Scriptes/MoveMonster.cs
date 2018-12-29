@@ -19,7 +19,7 @@ public class MoveMonster : Monster
 
     protected override void Start() 
     {
-        direction = transform.right; // направление монстра по умолчанию
+        direction = transform.right; // направление монстра по умолчанию в право
     }
 
     protected override void Update()
@@ -31,9 +31,9 @@ public class MoveMonster : Monster
     {
         Unit unit = collider.GetComponent<Unit>(); // юнит или не юнит прыгнул
 
-        if(unit && unit is Bird)
-        { 
-            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.1F) //проверяем с какой стороны прыжок на него, с верху или с боку. по модулю
+        if (unit && unit is Bird)
+        {
+            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.7F) //проверяем с какой стороны прыжок на него, с верху или с боку. по модулю
             {
                 ReceiveDamage();
             }
@@ -44,17 +44,13 @@ public class MoveMonster : Monster
 
     private void Move()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + transform.up * 0.5F + transform.right * direction.x * 2F, 0.2F); //0.2 - радиус. direction.x*2F уменьшили зазор м/у чудищем и препятствием
-        if (colliders.Length > 0 && colliders.All(x => !x.GetComponent<CharacterController>())) // если что то попалось
-        {
-            direction *= -1;  // переворачиваем монстра
-        }
-        
-       // if (colliders.Length == 0 )// если пустота
-      //  {
-       //     direction *= -1;  // переворачиваем монстра
-       // }
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + transform.up * 0.5F + transform.right * direction.x*3.5F , 0.2F); //0.2 - радиус. direction.x*2F уменьшили зазор м/у чудищем и препятствием
 
+        if (colliders.Length == 1 && colliders.All(x => !x.GetComponent<Bird>())) // если что то попалось.
+        {
+            direction *= -1.0F;  //  монстр идёт в другую сторону
+        }
+     
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
     }
 }
