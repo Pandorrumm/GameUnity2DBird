@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovePlatform : MonoBehaviour
 {
-    float speed = 4f;
+    public float speed = 4f;
     bool moveRight = true;
 
 	void Update ()

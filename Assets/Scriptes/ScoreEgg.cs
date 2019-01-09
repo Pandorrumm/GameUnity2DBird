@@ -10,7 +10,7 @@ public class ScoreEgg : MonoBehaviour
     void Start ()
     {    
         scoreText = GetComponent<Text>();
-        scoreAmount = 2;
+        scoreAmount = 10;
     }
 	
 	void Update ()
