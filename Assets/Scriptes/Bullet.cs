@@ -12,7 +12,9 @@ public class Bullet : MonoBehaviour
     private float speed = 7.0F;
 
     private Vector3 direction;
+
     public Vector3 Direction { set { direction = value; } }//направление полёта пули
+
     private SpriteRenderer sprite;
 
     public Color Color

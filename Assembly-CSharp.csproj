@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scriptes\DieSpace.cs" />
     <Compile Include="Assets\Scriptes\Egg.cs" />
     <Compile Include="Assets\Scriptes\Heart.cs" />
+    <Compile Include="Assets\Scriptes\Listok.cs" />
     <Compile Include="Assets\Scriptes\Lives.cs" />
     <Compile Include="Assets\Scriptes\MainMenu.cs" />
     <Compile Include="Assets\Scriptes\Monster.cs" />
@@ -81,10 +82,10 @@
     <Compile Include="Assets\Scriptes\ShootMonster.cs" />
     <Compile Include="Assets\Scriptes\Unit.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/user.PVS/Desktop/29.12.2018/Игра/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/W/Д/29.12.2018/Игра/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/user.PVS/Desktop/29.12.2018/Игра/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/W/Д/29.12.2018/Игра/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
