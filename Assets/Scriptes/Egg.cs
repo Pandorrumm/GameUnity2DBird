@@ -6,7 +6,11 @@ public class Egg : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision) //если произогло столкновение отнимаем одно
     {
-        ScoreEgg.scoreAmount -= 1;
-        Destroy(gameObject);       
+        Bird bird = collision.GetComponent<Bird>();
+        if (bird)
+        {
+            ScoreEgg.scoreAmount -= 1;
+            Destroy(gameObject);
+        }
     }
 }

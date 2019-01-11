@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Listok : MonoBehaviour
 {
-    float Napravlenie = 0.1f;
+    float Napravlenie = 0.4f;
     float speed = 0.0001f;
     float rotateX = 0f;
     float rotateY = 3f;
@@ -13,7 +13,7 @@ public class Listok : MonoBehaviour
 	
 	void Start ()
     {
-        //Destroy(gameObject, 15F);
+        Destroy(gameObject, 15F);
         speed = Random.Range(0.0001f, 0.02f);
         rotateX = Random.Range(0f, 2f);
         rotateY = Random.Range(0f, 0.01f);

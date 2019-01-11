@@ -186,8 +186,10 @@ public class Bird : Unit
     public override void ReceiveDamage() // отнимается жизнь. override - переопределили метод
     {
         Live--;
+        gameObject.GetComponent<Animation>().Play("New Animation1");
         rb.velocity = Vector3.zero; // обнуляем ускорение
         rb.AddForce(transform.up* 17.0F, ForceMode2D.Impulse); // при касании противника подлетает вверх
+
         
         Debug.Log(Live); //кол-во жизней в консоли оставшиеся
     }
@@ -195,6 +197,7 @@ public class Bird : Unit
     private void OnTriggerEnter2D(Collider2D collider)
     {
         Bullet bullet = collider.gameObject.GetComponent<Bullet>(); // столкновение героя с врагом
+
         if (bullet && bullet.Parent != gameObject)  //если пулю запустил не герой
         {
             ReceiveDamage();

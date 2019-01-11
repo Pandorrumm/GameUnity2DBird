@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scriptes\Egg.cs" />
     <Compile Include="Assets\Scriptes\Heart.cs" />
     <Compile Include="Assets\Scriptes\Listok.cs" />
+    <Compile Include="Assets\Scriptes\ListokSpawner.cs" />
     <Compile Include="Assets\Scriptes\Lives.cs" />
     <Compile Include="Assets\Scriptes\MainMenu.cs" />
     <Compile Include="Assets\Scriptes\Monster.cs" />
