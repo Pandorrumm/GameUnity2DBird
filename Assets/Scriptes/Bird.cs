@@ -82,7 +82,9 @@ public class Bird : Unit
 
     private void Jump()
     {
+       
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        
     }
 
     private void ChekGrounded() // проверка на земле или нет, т.е. есть ли другой коллайдер внизу
@@ -150,9 +152,11 @@ public class Bird : Unit
      //то скидываем скорость прыжка, что бы не разгонялся при каждом прыжке 
 
         if (collision.gameObject.tag == "Platform")
-        {
+        {       
             rb.velocity = Vector2.zero;
             rb.AddForce(transform.up * 16, ForceMode2D.Impulse); //направляем его вверх
+
+            Music.PlaySound("Jump");
         }
 
         //if (collision.gameObject.tag == "DeadPlatform") //смертельная платформа
@@ -176,6 +180,8 @@ public class Bird : Unit
 
     private void Shoot()
     {
+       Music.PlaySound("Fire");
+
        Vector3 position = transform.position;
        position.y += 0.8F; // поднимаем её чутка, что бы не из ног летела
        Bullet newBullet= Instantiate(bullet, position, bullet.transform.rotation) as Bullet; //создание пули
@@ -186,6 +192,9 @@ public class Bird : Unit
     public override void ReceiveDamage() // отнимается жизнь. override - переопределили метод
     {
         Live--;
+
+        Music.PlaySound("Damage");
+
         gameObject.GetComponent<Animation>().Play("New Animation1");
         rb.velocity = Vector3.zero; // обнуляем ускорение
         rb.AddForce(transform.up* 17.0F, ForceMode2D.Impulse); // при касании противника подлетает вверх

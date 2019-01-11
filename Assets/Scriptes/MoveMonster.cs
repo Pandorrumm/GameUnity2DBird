@@ -38,6 +38,7 @@ public class MoveMonster : Monster
         {
             liveMoveMonster--;
             Debug.Log(liveMoveMonster);
+
             if (liveMoveMonster == 0)
             {
                 ReceiveDamage();
@@ -46,7 +47,7 @@ public class MoveMonster : Monster
 
         Bird bird = collider.GetComponent<Bird>(); // юнит или не юнит прыгнул
 
-        if (bird) //
+        if (bird) 
         {
             bird.ReceiveDamage();
         }

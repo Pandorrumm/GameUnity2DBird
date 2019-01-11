@@ -31,7 +31,7 @@ public class ShootMonster : Monster
         Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet;
 
         newBullet.Parent = gameObject; //Parent пули это мы 
-        newBullet.Direction = - newBullet.transform.right; // направление -если влево то минус newBullet.transform.right;
+        newBullet.Direction =  newBullet.transform.right; // направление -если влево то минус newBullet.transform.right;
 
         newBullet.Color = bulletColor; // для цвета
     }

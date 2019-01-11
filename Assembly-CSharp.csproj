@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scriptes\Restart.cs" />
     <Compile Include="Assets\Scriptes\ScoreEgg.cs" />
     <Compile Include="Assets\Scriptes\ShootMonster.cs" />
+    <Compile Include="Assets\Scriptes\ShootMonsterLeft.cs" />
     <Compile Include="Assets\Scriptes\Unit.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/W/Д/29.12.2018/Игра/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
