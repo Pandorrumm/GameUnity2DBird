@@ -11,6 +11,7 @@ public class Heart : MonoBehaviour
         
         if (bird)
         {
+            Music.PlaySound("Live");
             bird.Live++;
             Destroy(gameObject);
         }

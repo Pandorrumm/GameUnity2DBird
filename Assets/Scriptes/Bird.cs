@@ -196,6 +196,7 @@ public class Bird : Unit
         Music.PlaySound("Damage");
 
         gameObject.GetComponent<Animation>().Play("New Animation1");
+
         rb.velocity = Vector3.zero; // обнуляем ускорение
         rb.AddForce(transform.up* 17.0F, ForceMode2D.Impulse); // при касании противника подлетает вверх
 
@@ -214,6 +215,7 @@ public class Bird : Unit
 
         if (Live == 0)
         {
+            Music.PlaySound("Death");
             gameOverText.SetActive(true);
             restartButton.SetActive(true);
             gameObject.SetActive(false);
@@ -221,6 +223,7 @@ public class Bird : Unit
 
         if (ScoreEgg.scoreAmount == 0)
         {
+            Music.PlaySound("Win");
             winText.SetActive(true);
             restartButtonWin.SetActive(true);
             gameObject.SetActive(false);

@@ -11,6 +11,7 @@ public class Unit : MonoBehaviour {
 
     protected virtual void Die()
     {
+        Music.PlaySound("DestroyEnemy");
         Destroy(gameObject);
     }
 }

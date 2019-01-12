@@ -9,6 +9,7 @@ public class Egg : MonoBehaviour
         Bird bird = collision.GetComponent<Bird>();
         if (bird)
         {
+            Music.PlaySound("Egg");
             ScoreEgg.scoreAmount -= 1;
             Destroy(gameObject);
         }
