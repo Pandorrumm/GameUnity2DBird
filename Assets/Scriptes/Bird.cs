@@ -50,7 +50,7 @@ public class Bird : Unit
 
     public GameObject gameOverText, winText, restartButton, restartButtonWin;
 
-    private void Awake()
+    private void Awake() //метод для получения ссылок на компоненты 
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -70,8 +70,9 @@ public class Bird : Unit
 
     private void Run()
     {
-        //dirX = CrossPlatformInputManager.GetAxis("Horizontal");
-        dirX = Input.GetAxis("Horizontal");
+
+        dirX = Input/*CrossPlatformInputManager*/.GetAxis("Horizontal");
+
         //Vector3 direction = transform.right*CrossPlatformInputManager.GetAxis("Horizontal"); // направление движения
 
         //// Откуда, куда и какое расстояние
@@ -83,7 +84,7 @@ public class Bird : Unit
     private void Jump()
     {
        
-        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse); //куда прыгаем и тип силы
         
     }
 
@@ -92,15 +93,14 @@ public class Bird : Unit
         // OverlapCircleAll - проверяет в своём радиусе то, что необходимо, всё что попадет вернёт
         // в массиве Collider2D[]   
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3F); //0.3F - радиус проверки
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3F); //0.3F - радиус проверки, есть ли коллайдеры в радиусе
 
-        isGrounded = colliders.Length > 1; 
+        isGrounded = colliders.Length > 1; //если >1 коллайдера, то на земле
     }
 
     
-    private void FixedUpdate()
+    private void FixedUpdate() //исп-ся для физики, вызывается через фиксированный промежуток времени
     {
-
         ChekGrounded();
         
         if (faceRight == false && dirX > 0)//moveX>0 - двигаемся вправо
@@ -182,11 +182,14 @@ public class Bird : Unit
     {
        Music.PlaySound("Fire");
 
-       Vector3 position = transform.position;
+       Vector3 position = transform.position; // где создаётся пуля
        position.y += 0.8F; // поднимаем её чутка, что бы не из ног летела
-       Bullet newBullet= Instantiate(bullet, position, bullet.transform.rotation) as Bullet; //создание пули
-       newBullet.Parent = gameObject;
-       newBullet.Direction=newBullet.transform.right*(faceRight ? 1.0F :-1.0F);//стреляет в зависимости от направления птички
+
+       Bullet newBullet = Instantiate(bullet, position, bullet.transform.rotation) as Bullet; //создание пули
+
+       newBullet.Parent = gameObject;// у вылетевшей пули родитель текущий gameObject
+
+        newBullet.Direction = newBullet.transform.right * (faceRight ? 1.0F : -1.0F);//стреляет в зависимости от направления птички
     }
     
     public override void ReceiveDamage() // отнимается жизнь. override - переопределили метод
@@ -200,8 +203,15 @@ public class Bird : Unit
         rb.velocity = Vector3.zero; // обнуляем ускорение
         rb.AddForce(transform.up* 17.0F, ForceMode2D.Impulse); // при касании противника подлетает вверх
 
-        
-        Debug.Log(Live); //кол-во жизней в консоли оставшиеся
+        if (Live == 0)
+        {
+            Music.PlaySound("Death");
+            gameOverText.SetActive(true);
+            restartButton.SetActive(true);
+            gameObject.SetActive(false);
+        }
+
+      //  Debug.Log(Live); //кол-во жизней в консоли оставшиеся
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -211,14 +221,6 @@ public class Bird : Unit
         if (bullet && bullet.Parent != gameObject)  //если пулю запустил не герой
         {
             ReceiveDamage();
-        }
-
-        if (Live == 0)
-        {
-            Music.PlaySound("Death");
-            gameOverText.SetActive(true);
-            restartButton.SetActive(true);
-            gameObject.SetActive(false);
         }
 
         if (ScoreEgg.scoreAmount == 0)

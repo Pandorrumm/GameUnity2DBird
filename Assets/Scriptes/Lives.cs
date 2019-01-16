@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Lives : MonoBehaviour
 {
-    private Transform[] hearts=new Transform[5];
+    private Transform[] hearts = new Transform[5];//массив сердечек
     private Bird bird;
 
     private void Awake()
@@ -17,13 +15,13 @@ public class Lives : MonoBehaviour
         }
     }
 
-    public void Refresh()
+    public void Refresh() //активирует нужное кол-во сердечек
     {
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < bird.Live)
             {
-                hearts[i].gameObject.SetActive(true);
+                hearts[i].gameObject.SetActive(true);//активны оставшиеся
             }
             else
             {

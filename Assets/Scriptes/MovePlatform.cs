@@ -9,11 +9,11 @@ public class MovePlatform : MonoBehaviour
 
 	void Update ()
     {
-		if(transform.position.x>4f)
+		if(transform.position.x>2.5f)
         {
             moveRight = false;
         }
-        if (transform.position.x <- 4f)
+        if (transform.position.x <- 2.5f)
         {
             moveRight = true;
         }

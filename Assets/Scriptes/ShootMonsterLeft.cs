@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShootMonsterLeft : Monster
 {
@@ -16,7 +14,6 @@ public class ShootMonsterLeft : Monster
     {
         bullet = Resources.Load<Bullet>("Bullet");
     }
-
 
     protected override void Start()
     {
@@ -42,7 +39,7 @@ public class ShootMonsterLeft : Monster
 
         if (unit && unit is Bird)
         {
-            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.7F) //проверяем с какой стороны прыжок на него, с верху или с боку. по модулю
+            if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 1F) //проверяем с какой стороны прыжок на него, с верху или с боку. по модулю
             {
                 ReceiveDamage();
             }

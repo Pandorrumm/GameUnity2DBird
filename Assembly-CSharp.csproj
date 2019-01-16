@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scriptes\Bullet.cs" />
     <Compile Include="Assets\Scriptes\Camera.cs" />
     <Compile Include="Assets\Scriptes\CollisionPlatform.cs" />
+    <Compile Include="Assets\Scriptes\Destroy.cs" />
     <Compile Include="Assets\Scriptes\DieSpace.cs" />
     <Compile Include="Assets\Scriptes\Egg.cs" />
     <Compile Include="Assets\Scriptes\Heart.cs" />

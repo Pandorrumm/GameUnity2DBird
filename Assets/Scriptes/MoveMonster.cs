@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Linq;
 
 public class MoveMonster : Monster
@@ -55,9 +53,9 @@ public class MoveMonster : Monster
 
     private void Move()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + transform.right * direction.x*3F , 0.5F); //0.2 - радиус. direction.x*4F уменьшили зазор м/у чудищем и препятствием
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + transform.right * direction.x*3F , 0.5F); //0.5 - радиус. direction.x*3F уменьшили зазор м/у чудищем и препятствием
 
-        if (colliders.Length == 1 && colliders.All(x => !x.GetComponent<Bird>())) // если что то попалось.
+        if (colliders.Length == 1 /*&& colliders.All(x => !x.GetComponent<Bird>())*/) // если что то попалось.
         {
             direction *= -1.0F;  //  монстр идёт в другую сторону
         }

@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private GameObject parent;
-
-    public GameObject Parent { set { parent = value; } get { return parent; } }
+    private GameObject parent; //кто запустил пулю
+    public GameObject Parent { set { parent = value; } get { return parent; } } // доступ 
 
     [SerializeField]
     private float speed = 7.0F;
 
-    private Vector3 direction;
+    private Vector3 direction; //направление полёта пули
 
-    public Vector3 Direction { set { direction = value; } }//направление полёта пули
+    public Vector3 Direction { set { direction = value; } }//св-во для доступа , set -  задаётся от движения героя
 
-    private SpriteRenderer sprite;
+    private SpriteRenderer sprite; //для доступа к цвету
 
     public Color Color
     {
@@ -38,13 +37,12 @@ public class Bullet : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)//проверяем, если попала в юнит, то уничтожится
     {
         Unit unit = collider.GetComponent<Unit>();
 
         if (unit && unit.gameObject!=parent) //если юнит не парент, то уничтожит себя
-        {
-            
+        {           
              Destroy(gameObject);
         }
     }
