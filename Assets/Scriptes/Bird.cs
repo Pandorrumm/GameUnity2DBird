@@ -71,7 +71,7 @@ public class Bird : Unit
     private void Run()
     {
 
-        dirX = Input/*CrossPlatformInputManager*/.GetAxis("Horizontal");
+        dirX = /*Input*/CrossPlatformInputManager.GetAxis("Horizontal");
 
         //Vector3 direction = transform.right*CrossPlatformInputManager.GetAxis("Horizontal"); // направление движения
 
@@ -138,9 +138,9 @@ public class Bird : Unit
     {
         Run();
         // if (CrossPlatformInputManager.GetButton("Horizontal")) ; 
-        if (isGrounded && Input/*CrossPlatformInputManager*/.GetButtonDown("Jump")) Jump(); //если на земле и нажимаем пробел, то прыгаем
+        if (isGrounded && /*Input*/CrossPlatformInputManager.GetButtonDown("Jump")) Jump(); //если на земле и нажимаем пробел, то прыгаем
 
-        if(Input/*CrossPlatformInputManager*/.GetButtonDown("Fire1")) //если клавиша нажата то стреляем
+        if(/*Input*/CrossPlatformInputManager.GetButtonDown("Fire1")) //если клавиша нажата то стреляем
         {
             Shoot();
         }

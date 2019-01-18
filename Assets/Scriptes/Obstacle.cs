@@ -12,6 +12,5 @@ public class Obstacle : MonoBehaviour
         {
             unit.ReceiveDamage(); // если меня коснулся юнит, игрок - то получай урон
         }
-    }
-	
+    }	
 }

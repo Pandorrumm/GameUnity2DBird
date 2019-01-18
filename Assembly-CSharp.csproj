@@ -64,7 +64,6 @@
     <Compile Include="Assets\Scriptes\Bird.cs" />
     <Compile Include="Assets\Scriptes\Bullet.cs" />
     <Compile Include="Assets\Scriptes\Camera.cs" />
-    <Compile Include="Assets\Scriptes\CollisionPlatform.cs" />
     <Compile Include="Assets\Scriptes\Destroy.cs" />
     <Compile Include="Assets\Scriptes\DieSpace.cs" />
     <Compile Include="Assets\Scriptes\Egg.cs" />
@@ -83,6 +82,7 @@
     <Compile Include="Assets\Scriptes\ScoreEgg.cs" />
     <Compile Include="Assets\Scriptes\ShootMonster.cs" />
     <Compile Include="Assets\Scriptes\ShootMonsterLeft.cs" />
+    <Compile Include="Assets\Scriptes\TrainingMenu.cs" />
     <Compile Include="Assets\Scriptes\Unit.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/W/Д/29.12.2018/Игра/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

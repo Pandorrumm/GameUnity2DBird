@@ -13,7 +13,7 @@ public class Listok : MonoBehaviour
 	
 	void Start ()
     {
-        Destroy(gameObject, 15F);
+        Destroy(gameObject, 8F);
         speed = Random.Range(0.0001f, 0.02f);
         rotateX = Random.Range(0f, 2f);
         rotateY = Random.Range(0f, 0.01f);

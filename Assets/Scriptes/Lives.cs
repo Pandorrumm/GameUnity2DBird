@@ -2,7 +2,7 @@
 
 public class Lives : MonoBehaviour
 {
-    private Transform[] hearts = new Transform[5];//массив сердечек
+    private Transform[] hearts = new Transform[5]; //массив сердечек
     private Bird bird;
 
     private void Awake()

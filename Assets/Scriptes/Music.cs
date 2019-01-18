@@ -1,10 +1,8 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Music : MonoBehaviour
 {
-
     public Slider volume;
     static AudioSource myMusic;
     public static AudioClip jumpSound, fireSound, damageSound,eggSound, liveSound, 
@@ -21,9 +19,7 @@ public class Music : MonoBehaviour
         winSound = Resources.Load<AudioClip>("Win");
         destroyEnemySound = Resources.Load<AudioClip>("DestroyEnemy");
 
-
         myMusic = GetComponent<AudioSource>();
-
     }
 
     void Update ()
@@ -61,10 +57,4 @@ public class Music : MonoBehaviour
                 break;
         }
     }
-
-
-    //void Awake()
-    //{
-    //    DontDestroyOnLoad(transform.gameObject);
-    //}
 }

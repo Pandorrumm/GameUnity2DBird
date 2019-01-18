@@ -15,7 +15,6 @@ public class ShootMonster : Monster
         bullet = Resources.Load<Bullet>("Bullet");
     }
 
- 
     protected override void Start()
     {
         InvokeRepeating("Shoot", rate, rate);

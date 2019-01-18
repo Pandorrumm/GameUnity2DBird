@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Monster : Unit
 {
@@ -23,6 +21,5 @@ public class Monster : Unit
         {
            bird. ReceiveDamage();
         }
-
     }
 }

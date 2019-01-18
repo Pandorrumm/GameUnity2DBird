@@ -10,9 +10,6 @@ public class MoveMonster : Monster
 
     private SpriteRenderer sprite;
 
-    [SerializeField]
-    private int liveMoveMonster = 5;
-
     protected override void Awake()  //ссылка на папку где лежит
     {      
         sprite = GetComponentInChildren<SpriteRenderer>();
@@ -30,25 +27,20 @@ public class MoveMonster : Monster
 
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
-        Bullet bullet = collider.GetComponent<Bullet>(); //косание Триггера с пулей
-
-        if (bullet) // если это пуля,то
         {
-            liveMoveMonster--;
-            Debug.Log(liveMoveMonster);
+            Unit unit = collider.GetComponent<Unit>(); // юнит или не юнит прыгнул
 
-            if (liveMoveMonster == 0)
+            if (unit && unit is Bird)
             {
-                ReceiveDamage();
+                if (Mathf.Abs(unit.transform.position.x - transform.position.x) < 0.7F) //проверяем с какой стороны прыжок на него, с верху или с боку. по модулю
+                {
+                    ReceiveDamage();
+                }
+                else
+                    unit.ReceiveDamage();
             }
         }
-
-        Bird bird = collider.GetComponent<Bird>(); // юнит или не юнит прыгнул
-
-        if (bird) 
-        {
-            bird.ReceiveDamage();
-        }
+       
     }
 
     private void Move()
